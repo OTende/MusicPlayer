@@ -14,11 +14,9 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, ServiceModule::class])
 interface AppComponent {
     fun inject(activity: MainActivity)
-
-//    fun injectContext(musicApplication: MusicApplication)
 }
 
 @Module(includes = [GlideModule::class])
