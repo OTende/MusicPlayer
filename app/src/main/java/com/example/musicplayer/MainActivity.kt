@@ -1,9 +1,12 @@
 package com.example.musicplayer
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.RequestManager
+import com.example.musicplayer.exoplayer.MusicService
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -15,5 +18,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         (applicationContext as MusicApplication).appComponent.inject(this)
         findViewById<TextView>(R.id.asdf).text = glide.toString()
+
+        val intent = Intent(this, MusicService::class.java)
+        startService(intent)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        stopService(Intent(this, MusicService::class.java))
     }
 }
