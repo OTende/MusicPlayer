@@ -1,5 +1,6 @@
 package com.example.musicplayer.di
 
+import com.example.musicplayer.data.remote.MusicDatabase
 import com.example.musicplayer.exoplayer.MusicService
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
@@ -14,6 +15,8 @@ interface ServiceComponent
 
 @Module
 class ServiceModule {
+    @Provides
+    fun provideMusicDatabase() = MusicDatabase()
 
     @Provides
     fun provideAudioAttributes() = AudioAttributes.Builder()

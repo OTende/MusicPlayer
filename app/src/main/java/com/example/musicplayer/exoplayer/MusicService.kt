@@ -12,6 +12,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import javax.inject.Inject
 
 private const val SERVICE_TAG = "MusicService"
@@ -41,6 +42,15 @@ class MusicService : MediaBrowserServiceCompat() {
             setSessionActivity(activityIntent)
             isActive = true
         }
+
+        sessionToken = mediaSession.sessionToken
+        mediaSessionConnector = MediaSessionConnector(mediaSession)
+        mediaSessionConnector.setPlayer(exoPlayer)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        serviceScope.cancel()
     }
 
     override fun onGetRoot(
@@ -49,6 +59,7 @@ class MusicService : MediaBrowserServiceCompat() {
         rootHints: Bundle?
     ): BrowserRoot? {
 //        TODO("Not yet implemented")
+
         return null
     }
 
