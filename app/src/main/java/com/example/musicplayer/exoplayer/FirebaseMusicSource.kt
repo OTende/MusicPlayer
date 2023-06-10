@@ -73,8 +73,8 @@ class FirebaseMusicSource @Inject constructor(
 
             concatenatingMediaSource.addMediaSource(mediaSource)
 
-            return concatenatingMediaSource
         }
+        return concatenatingMediaSource
     }
 
     fun asMediaItems() = songs.map { song ->
@@ -88,7 +88,7 @@ class FirebaseMusicSource @Inject constructor(
 
             MediaBrowserCompat.MediaItem(description, FLAG_PLAYABLE)
         }
-    }
+    }.toMutableList()
 
     fun whenReady(action: (Boolean) -> Unit): Boolean {
         return if (state == STATE_CREATED || state == STATE_INITIALIZING) {
