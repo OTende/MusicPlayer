@@ -138,6 +138,8 @@ class MusicService : MediaBrowserServiceCompat() {
     override fun onLoadChildren(
         parentId: String, result: Result<MutableList<MediaBrowserCompat.MediaItem>>
     ) {
+
+        // For potential playlists
         when (parentId) {
             MEDIA_ROOT_ID -> {
                 val resultSent = firebaseMusicSource.whenReady { isInitialized ->
