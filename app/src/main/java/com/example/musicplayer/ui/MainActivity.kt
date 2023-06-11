@@ -1,11 +1,12 @@
-package com.example.musicplayer
+package com.example.musicplayer.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.RequestManager
+import com.example.musicplayer.MusicApplication
+import com.example.musicplayer.R
 import com.example.musicplayer.exoplayer.MusicService
 import javax.inject.Inject
 
