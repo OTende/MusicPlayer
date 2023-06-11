@@ -4,9 +4,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.musicplayer.MainActivity
+import com.example.musicplayer.ui.MainActivity
 import com.example.musicplayer.MusicApplication
 import com.example.musicplayer.R
+import com.example.musicplayer.exoplayer.MusicServiceConnection
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -25,6 +26,12 @@ class AppModule(private val application: MusicApplication) {
     @Provides
     @Singleton
     fun provideApplication(): MusicApplication = application
+
+    @Provides
+    @Singleton
+    fun provideMusicServiceConnection(
+        application: MusicApplication
+    ) = MusicServiceConnection(application)
 }
 
 @Module
