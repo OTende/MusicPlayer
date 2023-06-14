@@ -1,5 +1,6 @@
 package com.example.musicplayer.di
 
+import android.content.Context
 import com.example.musicplayer.data.remote.MusicDatabase
 import com.example.musicplayer.exoplayer.MusicService
 import com.google.android.exoplayer2.C
@@ -11,10 +12,15 @@ import dagger.Module
 import dagger.Provides
 
 @Component(modules = [ServiceModule::class])
-interface ServiceComponent
+interface ServiceComponent {
+    fun inject(service: MusicService)
+}
 
 @Module
-class ServiceModule {
+class ServiceModule(private val context: Context) {
+    @Provides
+    fun provideContext() = context
+
     @Provides
     fun provideMusicDatabase() = MusicDatabase()
 
@@ -26,15 +32,15 @@ class ServiceModule {
 
     @Provides
     fun provideExoPlayer(
-        service: MusicService,
+        context: Context,
         audioAttributes: AudioAttributes,
-    ) = ExoPlayer.Builder(service).build().apply {
+    ) = ExoPlayer.Builder(context).build().apply {
         setAudioAttributes(audioAttributes, true)
         setHandleAudioBecomingNoisy(true)
     }
 
     @Provides
-    fun provideDataSourceFactory(service: MusicService) =
-        DefaultDataSource.Factory(service) //Util.getUserAgent(application, "Example Name")
+    fun provideDataSourceFactory(context: Context) =
+        DefaultDataSource.Factory(context) //Util.getUserAgent(application, "Example Name")
 
 }

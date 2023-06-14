@@ -9,6 +9,9 @@ import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
+import com.example.musicplayer.MusicApplication
+import com.example.musicplayer.di.DaggerServiceComponent
+import com.example.musicplayer.di.ServiceModule
 import com.example.musicplayer.exoplayer.callbacks.MusicPlaybackPreparer
 import com.example.musicplayer.exoplayer.callbacks.MusicPlayerEventListener
 import com.example.musicplayer.exoplayer.callbacks.MusicPlayerNotificationListener
@@ -22,7 +25,9 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -61,9 +66,18 @@ class MusicService : MediaBrowserServiceCompat() {
     override fun onCreate() {
         Log.d(SERVICE_TAG, "Music Service created")
         super.onCreate()
-        serviceScope.launch {
+
+        DaggerServiceComponent.builder()
+            .serviceModule(ServiceModule(this))
+            .build()
+            .inject(this)
+
+        MainScope().launch {
             firebaseMusicSource.fetchMediaData()
         }
+//        serviceScope.launch {
+//            firebaseMusicSource.fetchMediaData()
+//        }
         // Intent leading to activity
         val activityIntent = packageManager?.getLaunchIntentForPackage(packageName)?.let {
             PendingIntent.getActivity(this, 0, it, PendingIntent.FLAG_IMMUTABLE)

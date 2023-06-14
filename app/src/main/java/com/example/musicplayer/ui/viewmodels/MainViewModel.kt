@@ -6,6 +6,8 @@ import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.musicplayer.data.entities.Song
 import com.example.musicplayer.exoplayer.MusicServiceConnection
 import com.example.musicplayer.exoplayer.isPlayEnabled
@@ -14,10 +16,20 @@ import com.example.musicplayer.exoplayer.isPrepared
 import com.example.musicplayer.other.Constants.MEDIA_ROOT_ID
 import com.example.musicplayer.other.Resource
 import javax.inject.Inject
+import javax.inject.Provider
 
 class MainViewModel @Inject constructor(
     private val musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
+    class MyViewModelFactory @Inject constructor(private val connection: MusicServiceConnection) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return MainViewModel(connection) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
     private val _mediaItems = MutableLiveData<Resource<List<Song>>>()
     val mediaItems: LiveData<Resource<List<Song>>> = _mediaItems
 
