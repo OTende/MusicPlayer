@@ -72,7 +72,8 @@ class MusicService : MediaBrowserServiceCompat() {
             .build()
             .inject(this)
 
-        MainScope().launch {
+
+        serviceScope.launch {
             firebaseMusicSource.fetchMediaData()
         }
 //        serviceScope.launch {

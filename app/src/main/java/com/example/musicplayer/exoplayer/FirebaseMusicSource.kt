@@ -6,7 +6,9 @@ import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_ALBUM_ART_URI
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_ARTIST
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_DESCRIPTION
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_ICON_URI
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_SUBTITLE
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_URI
@@ -36,6 +38,7 @@ class FirebaseMusicSource @Inject constructor(
                 MediaMetadataCompat.Builder()
                     .putString(METADATA_KEY_MEDIA_ID, id)
                     .putString(METADATA_KEY_ARTIST, author)
+                    .putString(METADATA_KEY_DISPLAY_SUBTITLE, author)
                     .putString(METADATA_KEY_TITLE, title)
                     .putString(METADATA_KEY_DISPLAY_TITLE, title)
                     .putString(METADATA_KEY_DISPLAY_ICON_URI, imageUrl)
@@ -83,6 +86,7 @@ class FirebaseMusicSource @Inject constructor(
                 .setMediaUri(song.getString(METADATA_KEY_MEDIA_URI).toUri())
                 .setTitle(title)
                 .setMediaId(mediaId)
+                .setSubtitle(subtitle)
                 .setIconUri(iconUri)
                 .build()
 
