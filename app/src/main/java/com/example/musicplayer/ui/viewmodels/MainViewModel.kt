@@ -21,7 +21,8 @@ import javax.inject.Provider
 class MainViewModel @Inject constructor(
     private val musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
-    class MyViewModelFactory @Inject constructor(private val connection: MusicServiceConnection) : ViewModelProvider.Factory {
+    class MyViewModelFactory @Inject constructor(private val connection: MusicServiceConnection) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
@@ -30,6 +31,7 @@ class MainViewModel @Inject constructor(
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
+
     private val _mediaItems = MutableLiveData<Resource<List<Song>>>()
     val mediaItems: LiveData<Resource<List<Song>>> = _mediaItems
 

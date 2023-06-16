@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayer.MusicApplication
-import com.example.musicplayer.R
 import com.example.musicplayer.adapters.SongAdapter
 import com.example.musicplayer.databinding.FragmentHomeBinding
 import com.example.musicplayer.other.Status
@@ -36,7 +34,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        mainViewModel = ViewModelProvider(this, MainViewModel.).get()
         _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -46,7 +43,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
 
         subscribeToObservers()
-        songAdapter.setOnItemClickListener {
+        songAdapter.setOnSongClickListener {
             mainViewModel.playOrToggleSong(it)
         }
     }
