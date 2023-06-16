@@ -9,7 +9,6 @@ import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
-import com.example.musicplayer.MusicApplication
 import com.example.musicplayer.di.DaggerServiceComponent
 import com.example.musicplayer.di.ServiceModule
 import com.example.musicplayer.exoplayer.callbacks.MusicPlaybackPreparer
@@ -25,9 +24,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

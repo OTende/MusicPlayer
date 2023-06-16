@@ -6,7 +6,6 @@ import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_ALBUM_ART_URI
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_ARTIST
-import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_DESCRIPTION
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_ICON_URI
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_SUBTITLE
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE
@@ -52,7 +51,7 @@ class FirebaseMusicSource @Inject constructor(
 
     private val onReadyListeners = mutableListOf<(Boolean) -> Unit>()
 
-    private var state: State = State.STATE_CREATED
+    private var state: State = STATE_CREATED
         set(value) {
             if (value == STATE_INITIALIZED || value == STATE_ERROR) {
                 synchronized(onReadyListeners) {
