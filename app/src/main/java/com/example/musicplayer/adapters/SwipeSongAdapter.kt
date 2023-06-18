@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.musicplayer.data.entities.Song
 import com.example.musicplayer.databinding.SwipeItemBinding
+import javax.inject.Inject
 
-class SwipeSongAdapter : BaseSongAdapter<SwipeItemBinding>() {
+class SwipeSongAdapter @Inject constructor() : BaseSongAdapter<SwipeItemBinding>() {
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         parent: ViewGroup,
