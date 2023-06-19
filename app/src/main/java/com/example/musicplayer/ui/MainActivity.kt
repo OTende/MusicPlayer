@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bumptech.glide.RequestManager
 import com.example.musicplayer.MusicApplication
@@ -59,6 +62,40 @@ class MainActivity : AppCompatActivity() {
                 viewModel.playOrToggleSong(it, true)
             }
         }
+
+        swipeSongAdapter.setOnSongClickListener {
+            currentSong?.let {
+                viewModel.playOrToggleSong(it, true)
+            }
+        }
+
+        swipeSongAdapter.setOnSongClickListener {
+            binding.navHostFragment.findNavController().navigate(
+                R.id.action_homeFragment_to_songFragment
+            )
+        }
+
+
+        // Doesn't work with binding
+        supportFragmentManager.findFragmentById(R.id.songFragment)?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.songFragment) hideBottomBar()
+            else showBottomBar()
+        }
+
+    }
+
+    private fun showBottomBar() {
+        updateBottomBarVisibility(true)
+    }
+
+    private fun hideBottomBar() {
+        updateBottomBarVisibility(false)
+    }
+
+    private inline fun updateBottomBarVisibility(isVisible: Boolean) {
+        binding.ivCurSongImage.isVisible = isVisible
+        binding.vpSong.isVisible = isVisible
+        binding.ivPlayPause.isVisible = isVisible
     }
 
     override fun onDestroy() {
@@ -78,7 +115,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.mediaItems.observe(this) {
             it?.let { result ->
                 if (result.status == SUCCESS) {
-//                    SUCCESS -> {
                     result.data?.let { songs ->
                         swipeSongAdapter.submitList(songs)
                         if (songs.isNotEmpty()) {
@@ -88,8 +124,6 @@ class MainActivity : AppCompatActivity() {
                         switchViewPagerToCurrentSong(currentSong ?: return@observe)
                     }
 //                    }
-//                    ERROR -> Unit
-//                    LOADING -> Unit
                 }
             }
         }
@@ -115,7 +149,7 @@ class MainActivity : AppCompatActivity() {
                 if (result.status == ERROR) {
                     Snackbar.make(
                         binding.rootLayout,
-                        result.message ?: "Произошла неизвестная ошибка",
+                        result.message ?: getString(R.string.unknown_error),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
@@ -127,7 +161,7 @@ class MainActivity : AppCompatActivity() {
                 if (result.status == ERROR) {
                     Snackbar.make(
                         binding.rootLayout,
-                        result.message ?: "Произошла неизвестная ошибка",
+                        result.message ?: getString(R.string.unknown_error),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }

@@ -23,7 +23,7 @@ import javax.inject.Singleton
 class MainViewModel @Inject constructor(
     private val musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
-    class MyViewModelFactory @Inject constructor(private val connection: MusicServiceConnection) :
+    class Factory @Inject constructor(private val connection: MusicServiceConnection) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

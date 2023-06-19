@@ -4,4 +4,6 @@
     <string name="notification_channel_description">Shows the currently playing music</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="song_name">SONG NAME</string>
+    <string name="unknown_error">Произошла неизвестная ошибка</string>
 </resources>
