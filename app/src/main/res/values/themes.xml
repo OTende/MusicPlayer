@@ -1,8 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MusicPlayer" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/darkPrimaryColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/material_dynamic_secondary40</item>
+
     </style>
 
     <style name="Theme.MusicPlayer" parent="Base.Theme.MusicPlayer" />

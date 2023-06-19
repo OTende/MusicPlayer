@@ -6,4 +6,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="song_name">SONG NAME</string>
     <string name="unknown_error">Произошла неизвестная ошибка</string>
+    <string name="playlist_title">Playlist Title</string>
+    <string name="author">Author</string>
+    <string name="empty_time">00:00</string>
+    <string name="skip_previous">Skip to previous song</string>
+    <string name="skip_next">Skip to the next song</string>
 </resources>

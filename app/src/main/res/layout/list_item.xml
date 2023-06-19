@@ -10,7 +10,8 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvPrimary"
@@ -18,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:gravity="center|left"
-        android:text="Playlist Title"
+        android:gravity="center|start"
+        android:text="@string/playlist_title"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
         android:id="@+id/tvSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="100 Songs"
+        android:text="@string/author"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"

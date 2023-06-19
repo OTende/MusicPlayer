@@ -158,7 +158,7 @@ class MusicService : MediaBrowserServiceCompat() {
                     if (isInitialized) {
                         result.sendResult(firebaseMusicSource.asMediaItems())
 
-                        if (!isPlayerInitialized && !firebaseMusicSource.songs.isEmpty()) {
+                        if (!isPlayerInitialized && firebaseMusicSource.songs.isNotEmpty()) {
                             preparePlayer(
                                 firebaseMusicSource.songs, firebaseMusicSource.songs[0], false
                             )

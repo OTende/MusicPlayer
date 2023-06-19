@@ -41,6 +41,6 @@ class ServiceModule(private val context: Context) {
 
     @Provides
     fun provideDataSourceFactory(context: Context) =
-        DefaultDataSource.Factory(context) //Util.getUserAgent(application, "Example Name")
+        DefaultDataSource.Factory(context)
 
 }

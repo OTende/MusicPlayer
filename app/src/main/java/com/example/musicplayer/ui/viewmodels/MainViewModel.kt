@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.musicplayer.data.entities.Song
 import com.example.musicplayer.exoplayer.MusicServiceConnection
 import com.example.musicplayer.exoplayer.isPlayEnabled
@@ -16,7 +15,6 @@ import com.example.musicplayer.exoplayer.isPrepared
 import com.example.musicplayer.other.Constants.MEDIA_ROOT_ID
 import com.example.musicplayer.other.Resource
 import javax.inject.Inject
-import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton

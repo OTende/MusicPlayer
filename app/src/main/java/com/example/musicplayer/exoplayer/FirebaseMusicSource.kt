@@ -14,7 +14,10 @@ import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_URI
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_TITLE
 import androidx.core.net.toUri
 import com.example.musicplayer.data.remote.MusicDatabase
-import com.example.musicplayer.exoplayer.State.*
+import com.example.musicplayer.exoplayer.State.STATE_CREATED
+import com.example.musicplayer.exoplayer.State.STATE_ERROR
+import com.example.musicplayer.exoplayer.State.STATE_INITIALIZED
+import com.example.musicplayer.exoplayer.State.STATE_INITIALIZING
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
