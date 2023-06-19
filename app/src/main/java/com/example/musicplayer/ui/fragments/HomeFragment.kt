@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayer.MusicApplication
+import com.example.musicplayer.R
 import com.example.musicplayer.adapters.SongAdapter
 import com.example.musicplayer.databinding.FragmentHomeBinding
+import com.example.musicplayer.databinding.FragmentMusicInfoBinding
 import com.example.musicplayer.other.Status
 import com.example.musicplayer.ui.viewmodels.MainViewModel
 import javax.inject.Inject
@@ -41,7 +45,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-
         subscribeToObservers()
         songAdapter.setOnSongClickListener {
             mainViewModel.playOrToggleSong(it)

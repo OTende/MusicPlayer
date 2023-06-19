@@ -6,6 +6,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.musicplayer.MusicApplication
+import com.example.musicplayer.ui.fragments.MusicInfoFragment
 import com.example.musicplayer.R
 import com.example.musicplayer.adapters.SwipeSongAdapter
 import com.example.musicplayer.exoplayer.MusicServiceConnection
@@ -24,6 +25,7 @@ interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(homeFragment: HomeFragment)
     fun inject(songFragment: SongFragment)
+    fun inject(musicInfoFragment: MusicInfoFragment)
 }
 
 @Module(includes = [GlideModule::class])

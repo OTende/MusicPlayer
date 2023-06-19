@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.bumptech.glide.RequestManager
 import com.example.musicplayer.MusicApplication
 import com.example.musicplayer.R
@@ -90,6 +91,20 @@ class SongFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        currentSong?.let {
+            updateTitleAndSongImage(it)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        currentSong?.let {
+            updateTitleAndSongImage(it)
+        }
     }
 
     override fun onDestroy() {
