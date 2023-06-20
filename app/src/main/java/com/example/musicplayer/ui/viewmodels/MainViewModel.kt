@@ -38,6 +38,8 @@ class MainViewModel @Inject constructor(
     val isConnected = musicServiceConnection.isConnected
     val networkError = musicServiceConnection.networkError
     val currentSong = musicServiceConnection.currentSong
+    var currentSongIndex: Int = 0
+
     val playbackState = musicServiceConnection.playbackState
 
     init {

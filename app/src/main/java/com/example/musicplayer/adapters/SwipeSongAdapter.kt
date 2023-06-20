@@ -17,8 +17,8 @@ class SwipeSongAdapter @Inject constructor() : BaseSongAdapter<SwipeItemBinding>
 
     override fun bind(holder: SongViewHolder, song: Song) {
         with(holder.binding) {
-            val text = "${song.title} - ${song.author}"
-            tvPrimary.text = text
+//            val text = "${song.title} - ${song.author}"
+            tvPrimary.text = song.title
 
             root.setOnClickListener {
                 onItemClickListener?.let { click ->

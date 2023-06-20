@@ -86,17 +86,10 @@ class MusicInfoFragment : Fragment() {
             }
         }
 
-//        swipeSongAdapter.setOnSongClickListener {
-//            currentSong?.let {
-//                viewModel.playOrToggleSong(it, true)
-//            }
-//        }
-
         swipeSongAdapter.setOnSongClickListener {
             findNavController().navigate(
                 R.id.action_homeFragment_to_songFragment
             )
-//            binding.bottomMenu.isVisible = false
         }
     }
 
@@ -138,7 +131,7 @@ class MusicInfoFragment : Fragment() {
                 if (result.status == Status.ERROR) {
                     Snackbar.make(
                         binding.root,
-                        result.message ?: getString(R.string.unknown_error),
+                        result.message ?: getString(R.string.no_internet),
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
