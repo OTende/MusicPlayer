@@ -5,11 +5,18 @@ import com.example.musicplayer.data.entities.Song
 import com.example.musicplayer.other.Constants.MUSIC_DATABASE
 import com.example.musicplayer.other.Constants.SONG_COLLECTION
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.firestore.ktx.memoryCacheSettings
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 class MusicDatabase {
-    private val firestore = FirebaseFirestore.getInstance()
+    private val settings = firestoreSettings {
+        setLocalCacheSettings(memoryCacheSettings {  })
+    }
+    private val firestore = FirebaseFirestore.getInstance().apply {
+        firestoreSettings = settings
+    }
     private val songCollection = firestore.collection(SONG_COLLECTION)
 
     suspend fun getAllSongs(): List<Song> {
