@@ -2,7 +2,7 @@
 
 The Music Player App is an Android application that allows users to play and manage their music library from Firebase. It provides a user-friendly interface with essential features for playing, pausing and skipping tracks. 
 
-<img title="" src="file:///home/yegor/.config/marktext/images/2023-06-28-21-12-31-image.png" alt="" width="175" data-align="inline">    <img title="" src="file:///home/yegor/.config/marktext/images/2023-06-28-20-32-02-image.png" alt="" width="173" data-align="inline">    <img title="" src="file:///home/yegor/.config/marktext/images/2023-06-28-21-19-50-image.png" alt="" width="196">
+<img title="" src="https://github.com/OTende/MusicPlayer/blob/master/screenshots/1.png?raw=true" alt="Screenshot" width="204">    <img title="" src="https://github.com/OTende/MusicPlayer/blob/master/screenshots/2.png?raw=true" alt="Screenshot" width="204">    <img title="" src="https://github.com/OTende/MusicPlayer/blob/master/screenshots/3.png?raw=true" alt="Screenshot" width="208">
 
 ## Features
 
@@ -19,8 +19,6 @@ The Music Player App is an Android application that allows users to play and man
 - [Glide](https://github.com/bumptech/glide): A fast and efficient image loading library for Android.
 - [Dagger2](https://dagger.dev/): A dependency injection framework that helps manage dependencies in your app by providing a way to define and inject them.
 - [Firebase](https://firebase.google.com/): A comprehensive suite of development tools provided by Google for building mobile and web applications. It includes features like authentication, real-time database, cloud storage, push notifications, and more.
-  
-  
 
 --- 
 
@@ -33,7 +31,3 @@ The Music Player App is an Android application that allows users to play and man
 - [Foreground Services](https://developer.android.com/guide/components/foreground-services) - For running playback in the foreground.
 
 ---
-
-
-
-
